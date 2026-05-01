@@ -1,0 +1,120 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0a0f1e;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0d1b3e;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="board-bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#162040;stop-opacity:0.9" />
+      <stop offset="100%" style="stop-color:#1a2a50;stop-opacity:0.9" />
+    </linearGradient>
+    <filter id="glow-black">
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="glow-white">
+      <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
+      <feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="title-glow">
+      <feGaussianBlur stdDeviation="8" result="coloredBlur"/>
+      <feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#bg)"/>
+
+  <!-- Subtle grid pattern -->
+  <g opacity="0.05" stroke="#4488ff" stroke-width="0.5">
+    <line x1="0" y1="63" x2="1200" y2="63"/>
+    <line x1="0" y1="126" x2="1200" y2="126"/>
+    <line x1="0" y1="189" x2="1200" y2="189"/>
+    <line x1="0" y1="252" x2="1200" y2="252"/>
+    <line x1="0" y1="315" x2="1200" y2="315"/>
+    <line x1="0" y1="378" x2="1200" y2="378"/>
+    <line x1="0" y1="441" x2="1200" y2="441"/>
+    <line x1="0" y1="504" x2="1200" y2="504"/>
+    <line x1="0" y1="567" x2="1200" y2="567"/>
+    <line x1="120" y1="0" x2="120" y2="630"/>
+    <line x1="240" y1="0" x2="240" y2="630"/>
+    <line x1="360" y1="0" x2="360" y2="630"/>
+    <line x1="480" y1="0" x2="480" y2="630"/>
+    <line x1="600" y1="0" x2="600" y2="630"/>
+    <line x1="720" y1="0" x2="720" y2="630"/>
+    <line x1="840" y1="0" x2="840" y2="630"/>
+    <line x1="960" y1="0" x2="960" y2="630"/>
+    <line x1="1080" y1="0" x2="1080" y2="630"/>
+  </g>
+
+  <!-- Board panel -->
+  <rect x="660" y="60" width="490" height="490" rx="16" fill="url(#board-bg)" stroke="#2a4080" stroke-width="1.5"/>
+
+  <!-- Mini Gomoku grid (8x8 visible section) -->
+  <g transform="translate(680, 80)" opacity="0.8" stroke="#2a5090" stroke-width="0.8">
+    <line x1="0" y1="56" x2="448" y2="56"/>
+    <line x1="0" y1="112" x2="448" y2="112"/>
+    <line x1="0" y1="168" x2="448" y2="168"/>
+    <line x1="0" y1="224" x2="448" y2="224"/>
+    <line x1="0" y1="280" x2="448" y2="280"/>
+    <line x1="0" y1="336" x2="448" y2="336"/>
+    <line x1="0" y1="392" x2="448" y2="392"/>
+    <line x1="0" y1="448" x2="448" y2="448"/>
+    <line x1="56" y1="0" x2="56" y2="448"/>
+    <line x1="112" y1="0" x2="112" y2="448"/>
+    <line x1="168" y1="0" x2="168" y2="448"/>
+    <line x1="224" y1="0" x2="224" y2="448"/>
+    <line x1="280" y1="0" x2="280" y2="448"/>
+    <line x1="336" y1="0" x2="336" y2="448"/>
+    <line x1="392" y1="0" x2="392" y2="448"/>
+    <line x1="448" y1="0" x2="448" y2="448"/>
+  </g>
+
+  <!-- Black stones -->
+  <g filter="url(#glow-black)" transform="translate(680, 80)">
+    <circle cx="112" cy="112" r="22" fill="#111" stroke="#444" stroke-width="2"/>
+    <circle cx="168" cy="168" r="22" fill="#111" stroke="#444" stroke-width="2"/>
+    <circle cx="224" cy="224" r="22" fill="#111" stroke="#444" stroke-width="2"/>
+    <circle cx="280" cy="280" r="22" fill="#111" stroke="#444" stroke-width="2"/>
+    <circle cx="336" cy="336" r="22" fill="#111" stroke="#444" stroke-width="2"/>
+    <!-- Win line glow -->
+    <line x1="112" y1="112" x2="336" y2="336" stroke="#fbbf24" stroke-width="3" stroke-linecap="round" opacity="0.7"/>
+  </g>
+
+  <!-- White stones -->
+  <g filter="url(#glow-white)" transform="translate(680, 80)">
+    <circle cx="168" cy="112" r="22" fill="url(#white-grad)" stroke="#aaa" stroke-width="2"/>
+    <circle cx="224" cy="112" r="22" fill="#e8e8e8" stroke="#aaa" stroke-width="2"/>
+    <circle cx="112" cy="224" r="22" fill="#e8e8e8" stroke="#aaa" stroke-width="2"/>
+    <circle cx="280" cy="168" r="22" fill="#e8e8e8" stroke="#aaa" stroke-width="2"/>
+  </g>
+
+  <!-- Left: Title & Info -->
+  <!-- Lightning badge -->
+  <rect x="50" y="60" width="120" height="36" rx="18" fill="#1e3a6e" stroke="#3b6fd4" stroke-width="1.5"/>
+  <text x="110" y="83" font-family="system-ui, sans-serif" font-size="14" fill="#7fb3f5" text-anchor="middle" font-weight="600">⚡ ER Powered</text>
+
+  <!-- Main title -->
+  <text x="50" y="200" font-family="system-ui, -apple-system, sans-serif" font-size="96" fill="#ffffff" font-weight="800" filter="url(#title-glow)">Chain</text>
+  <text x="50" y="295" font-family="system-ui, -apple-system, sans-serif" font-size="96" fill="#3b82f6" font-weight="800" filter="url(#title-glow)">Go</text>
+
+  <!-- Subtitle -->
+  <text x="50" y="350" font-family="system-ui, sans-serif" font-size="24" fill="#94a3b8">Fully on-chain Gomoku on Solana</text>
+
+  <!-- Tagline -->
+  <text x="50" y="410" font-family="system-ui, sans-serif" font-size="20" fill="#fbbf24" font-weight="600">One link. One click. One verifiable match.</text>
+
+  <!-- Tech badges -->
+  <rect x="50" y="440" width="140" height="32" rx="8" fill="#1a3a1a" stroke="#22c55e" stroke-width="1"/>
+  <text x="120" y="461" font-family="system-ui, sans-serif" font-size="13" fill="#22c55e" text-anchor="middle">MagicBlock ER</text>
+
+  <rect x="200" y="440" width="160" height="32" rx="8" fill="#1a1a3a" stroke="#a855f7" stroke-width="1"/>
+  <text x="280" y="461" font-family="system-ui, sans-serif" font-size="13" fill="#a855f7" text-anchor="middle">Solana Actions</text>
+
+  <rect x="370" y="440" width="100" height="32" rx="8" fill="#3a1a1a" stroke="#f97316" stroke-width="1"/>
+  <text x="420" y="461" font-family="system-ui, sans-serif" font-size="13" fill="#f97316" text-anchor="middle">Privy</text>
+
+  <!-- Bottom bar -->
+  <rect x="0" y="580" width="1200" height="50" fill="#0a0f1e" opacity="0.8"/>
+  <text x="600" y="611" font-family="system-ui, sans-serif" font-size="14" fill="#64748b" text-anchor="middle">Colosseum Frontier Hackathon 2026 · Solana Devnet</text>
+</svg>

@@ -1,0 +1,14 @@
+{
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        { "key": "Access-Control-Allow-Origin", "value": "*" },
+        { "key": "Access-Control-Allow-Methods", "value": "GET,POST,OPTIONS" },
+        { "key": "Access-Control-Allow-Headers", "value": "Content-Type" },
+        { "key": "X-Action-Version", "value": "2.2.1" },
+        { "key": "X-Blockchain-Ids", "value": "solana:EtWTRABZaYq6iMfeYKouRu166VU2xqa1" }
+      ]
+    }
+  ]
+}
