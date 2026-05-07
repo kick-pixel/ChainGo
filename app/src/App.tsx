@@ -1,5 +1,5 @@
 import React, { useMemo, useState } from 'react'
-import { useWalletModal } from '@solana/wallet-adapter-react-ui'
+import { WalletMultiButton, useWalletModal } from '@solana/wallet-adapter-react-ui'
 import { useWallet } from '@solana/wallet-adapter-react'
 import { Game } from './components/Game'
 
@@ -19,6 +19,7 @@ const App: React.FC = () => {
 
     return { isTelegram, isMobile, appUrl, phantomUrl, solflareUrl }
   }, [])
+  const useMobileWalletUx = walletOpenInfo.isTelegram || walletOpenInfo.isMobile
 
   const handleWalletClick = () => {
     if (publicKey) {
@@ -56,10 +57,14 @@ const App: React.FC = () => {
         </div>
         <div className="header-right">
           <div className="er-badge">⚡ MagicBlock ER</div>
-          <button className="wallet-connect-btn" type="button" onClick={handleWalletClick}>
-            <span className="wallet-connect-icon">{publicKey ? '●' : '▯'}</span>
-            <span>{walletButtonText}</span>
-          </button>
+          {useMobileWalletUx ? (
+            <button className="wallet-connect-btn" type="button" onClick={handleWalletClick}>
+              <span className="wallet-connect-icon">{publicKey ? '●' : '▯'}</span>
+              <span>{walletButtonText}</span>
+            </button>
+          ) : (
+            <WalletMultiButton />
+          )}
         </div>
       </header>
 
@@ -74,7 +79,7 @@ const App: React.FC = () => {
               <br />
               <span className="highlight">Sub-second moves · Verifiable settlement</span>
             </p>
-            {(walletOpenInfo.isTelegram || walletOpenInfo.isMobile) && (
+            {useMobileWalletUx && (
               <div className="wallet-help-card">
                 <div className="wallet-help-kicker">Telegram wallet mode</div>
                 <h2 className="wallet-help-title">Choose the path that opens your wallet</h2>
@@ -98,9 +103,15 @@ const App: React.FC = () => {
                 </div>
               </div>
             )}
-            <button className="connect-main-btn" type="button" onClick={handleWalletClick}>
-              {walletButtonText}
-            </button>
+            {useMobileWalletUx ? (
+              <button className="connect-main-btn" type="button" onClick={handleWalletClick}>
+                {walletButtonText}
+              </button>
+            ) : (
+              <div className="desktop-wallet-entry">
+                <WalletMultiButton />
+              </div>
+            )}
           </div>
         ) : (
           <Game />

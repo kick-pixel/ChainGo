@@ -75,7 +75,11 @@ const Root: React.FC = () => {
     // FIX: 使用 BASE_ENDPOINT (devnet) 而非 ER endpoint 作为主连接
     // ER 专用连接在 useGame.ts 内部通过 getErConn() 单独维护
     <ConnectionProvider endpoint={BASE_ENDPOINT}>
-      <WalletProvider wallets={wallets} autoConnect>
+      <WalletProvider
+        wallets={wallets}
+        autoConnect
+        onError={(error) => console.error('[wallet]', error)}
+      >
         <WalletModalProvider>
           <App />
         </WalletModalProvider>
